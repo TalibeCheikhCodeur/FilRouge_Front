@@ -1,0 +1,72 @@
+<div class="flex justify-center items-center h-screen bg-white border-gray-200 dark:border-gray-600 dark:bg-gray-900">
+    <div class="p-4 w-3/4 bg-white border-gray-200 shadow-sm border-y dark:bg-gray-800 dark:border-gray-600">
+        <div class="bg-white-rounded-lg shadow-lg  dark:text-white w-full">
+            <div class="p-4">
+                <form [formGroup]="classeForm" (ngSubmit)="onSubmit()">
+                    <div class="flex space-x-4 mb-4">
+                        <div class="w-1/4">
+                            <label for="module" class="block mb-2">Module</label>
+                            <select id="module" name="module" class="w-full p-2 border border-gray-300 rounded"
+                                formControlName="module_id">
+                                <option value="">Selectionner un module</option>
+                                <option *ngFor="let module of modules" value={{module.id}}>{{module.libelle}}</option>
+                            </select>
+                        </div>
+                        <div class="w-1/4">
+                            <label for="professeur" class="block mb-2">Professeur</label>
+                            <select id="professeur" name="professeur" class="w-full p-2 border border-gray-300 rounded"
+                                formControlName="professeur_id">
+                                <option value="">Selectionner un prof</option>
+                                <option *ngFor="let prof of profs" value={{prof.id}}>{{prof.nomComplet}}</option>
+                            </select>
+                        </div>
+                        <div class="w-1/4">
+                            <label for="semestre" class="block mb-2">Semestre</label>
+                            <select id="semestre" name="semestre" class="w-full p-2 border border-gray-300 rounded"
+                                formControlName="semestre_id">
+                                <option value="">Selectionner un semestre</option>
+                                <option *ngFor="let semestre of semestres" value={{semestre.id}}>{{semestre.libelle}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="w-1/4">
+                            <label for="etat" class="block mb-2">État</label>
+                            <select id="etat" name="etat" class="w-full p-2 border border-gray-300 rounded"
+                                formControlName="etat">
+                                <option value="en cours">En cours</option>
+                                <option value="termine">Terminé</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="flex space-x-4 mb-4">
+                        <div class="w-1/4">
+                            <label for="heures" class="block mb-2">Nombre d'heures</label>
+                            <input type="number" id="heures" name="heures"
+                                class="w-full p-2 border border-gray-300 rounded" formControlName="nombre_heures">
+                        </div>
+                        <div formArrayName="classes" class="flex justify-center w-screen flex-wrap">
+                            <div class=" mr-10 " *ngFor="let classe of classes.controls; let i = index"
+                                [formGroupName]="i">
+                                <label for="classe{{i}}" class="block mb-2">Classe {{i + 1}}</label>
+                                <select id="classe{{i}}" name="classe{{i}}" class="p-2 border border-gray-300 rounded"
+                                    formControlName="classe">
+                                    <option *ngFor="let dataclasse of dataclasses" value={{dataclasse.id}}>
+                                        {{dataclasse.libelle}}</option>
+                                    <!-- Options pour les classes -->
+                                </select>
+                            </div>
+                        </div>
+                        <div class="w-1/4 flex items-center">
+                            <button (click)="ajouterClasse()" type="button"
+                                class="bg-cyan-800 text-white px-1.5 py-1.5 rounded">Ajouter
+                                Classe</button>
+                        </div>
+                    </div>
+                    <div class="flex justify-end">
+                        <button type="submit" class="bg-cyan-800 text-white px-4 py-2 rounded">Soumettre</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

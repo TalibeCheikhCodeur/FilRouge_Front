@@ -1,0 +1,33 @@
+<div class="bg-white border-gray-200 dark:border-gray-600 dark:bg-gray-900 h-screen">
+    <div class="container mx-auto p-4">
+        <h1 class="text-3xl font-semibold text-gray-800 mb-8">Liste des cours</h1>
+        <!-- Boucle pour afficher les cartes -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            <ng-container>
+                <div class="bg-white border-gray-200 shadow-sm border-y dark:bg-gray-800 dark:border-gray-600 rounded-lg p-4 from-neutral-50">
+                    <div class="flex justify-between">
+                        <h2 class="text-lg font-semibold"></h2>
+                        <div class="flex space-x-5">
+                            <i class="fa-solid fa-pen-to-square cursor-pointer text-blue-500 font-semibold">aa</i>
+                            <i class="fa-solid fa-trash cursor-pointer text-blue-500 font-semibold">bb</i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">Professeur:</p>
+                    <p class="text-gray-600">Semestre:</p>
+                    <p class="text-gray-600">
+                        <span>
+
+                        </span>
+                    </p>
+                    <div class="py-2 flex justify-end">
+                        <a routerLink="/addSession">
+                            <button class="bg-blue-500 hover:bg-blue-600 p-2 rounded-xl text-white text-center">
+                                Planifié une session
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</div>
