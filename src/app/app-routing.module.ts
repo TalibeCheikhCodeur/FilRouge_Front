@@ -4,23 +4,39 @@ import { AjoutCoursComponent } from './menu/ajout-cours/ajout-cours.component';
 import { MenuComponent } from './menu/menu.component';
 import { InscriptionComponent } from './menu/inscription/inscription.component';
 import { ListerCoursComponent } from './menu/lister-cours/lister-cours.component';
+import { SessionComponentComponent } from './menu/session-component/session-component.component';
+import { ListerSessionComponent } from './menu/lister-session/lister-session.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
+  
   {
-    path: '',
+    path:'',
+    component:LoginComponent
+  },
+  {
+    path: 'menu',
     component: MenuComponent,
   },
   {
-    path: 'cours',
+    path: 'menu/cours',
     component: AjoutCoursComponent
   },
   {
-    path: 'inscription',
+    path: 'menu/inscription',
     component: InscriptionComponent
   },
   {
-    path: 'listCours',
+    path: 'menu/listCours',
     component: ListerCoursComponent
+  },
+  {
+    path: 'menu/listCours/ajoutSession',
+    component: SessionComponentComponent
+  },
+  {
+    path:'menu/listerSession',
+    component:ListerSessionComponent
   }
 
 ];

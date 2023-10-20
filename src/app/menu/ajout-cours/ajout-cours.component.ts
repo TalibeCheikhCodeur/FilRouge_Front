@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, Validators } from '@angular/forms';
 import { JsonData, Modules } from 'src/app/modules';
 import { Profs } from 'src/app/profs';
 import { CoursServiceService } from 'src/app/cours-service.service';
@@ -18,7 +19,7 @@ export class AjoutCoursComponent {
   public dataclasses!: any[]
   message!: string
 
-  constructor(private http: HttpClient, private formBuilder: FormBuilder, private coursService: CoursServiceService) { }
+  constructor(private http: HttpClient, private formBuilder: FormBuilder, private coursService: CoursServiceService,private router: Router) { }
   classeForm = this.formBuilder.group({
     module_id: ['', Validators.required],
     professeur_id: ['', Validators.required],
@@ -80,8 +81,6 @@ export class AjoutCoursComponent {
     return this.http.get<JsonData>('http://127.0.0.1:8000/api/classes').subscribe(response => {
       this.dataclasses = Object.values(response)[0];
       console.log(this.dataclasses);
-
-
     })
   }
 
@@ -89,10 +88,18 @@ export class AjoutCoursComponent {
     const formData = this.classeForm.value;
     console.log(formData);
     this.coursService.postCours(formData).subscribe(response => {
-      console.log("insertion Reussi");
+      console.log(response);
+      if ('message' in response) {
+        this.message = response.message as string
+      }
+      setTimeout(() => {
+        this.message = "";
+      }, 3000);
     })
 
     this.classeForm.reset();
   }
+
+  
 
 }

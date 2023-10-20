@@ -1,0 +1,71 @@
+<div class="flex justify-center items-center h-screen">
+    <div class="max-w-md w-full">
+        <div class="p-8 rounded-md bg-white border-gray-200 shadow-sm border-y dark:bg-gray-800 dark:border-gray-600">
+            <h2 class="text-2xl font-bold mb-6">Formulaire</h2>
+
+            <form [formGroup]="sessionForm"  (ngSubmit)="submit()">
+                <div class="mb-4">
+                    <label for="heure_debut" class="block text-gray-700">Heure de début</label>
+                    <input type="time" id="heure_debut" formControlName="heure_debut"
+                        class="form-input mt-1 block w-full" />
+                </div>
+
+                <div classd="mb-4">
+                    <label for="heure_fin" class="block text-gray-700">Heure de fin</label>
+                    <input type="time" id="heure_fin" formControlName="heure_fin"
+                        class="form-input mt-1 block w-full" />
+                </div>
+
+                <div class="mb-4">
+                    <label for="type_cours" class="block text-gray-700">Type de cours</label>
+                    <select type="text" id="type_cours" formControlName="type_cours"
+                        class="form-input mt-1 block w-full">
+                        <option value="en ligne">En ligne</option>
+                        <option value="presentiel">Presentiel</option>
+                    </select>
+                </div>
+
+                <div class="mb-4">
+                    <label for="cours_global_classe_id" class="block text-gray-700">Classes</label>
+                    <ng-select id="cours_global_classe_id" [multiple]="true" formControlName="cours_global_classe_id"
+                        class="form-multiselect block w-full">
+                        <ng-option>Selectionner les classes</ng-option>
+                        <ng-option *ngFor="let classe of classes" value="{{classe.id}}">{{classe.classe}}</ng-option>
+                    </ng-select>
+                </div>
+
+                <div class="mb-4">
+                    <label for="salle_id" class="block text-gray-700">Salle</label>
+                    <select id="salle_id" formControlName="salle_id" class="form-select mt-1 block w-full">
+                        <option value="">Choisir une Salle</option>
+                        <option *ngFor="let salle of salles" value="{{salle.id}}">{{salle.nom}}</option>
+                    </select>
+                </div>
+
+                <div class="mb-4">
+                    <label for="etat" class="block text-gray-700">État du cours</label>
+                    <select type="text" id="etat" formControlName="etat" class="form-input mt-1 block w-full" >
+                        <option value="en cours">en cours</option>
+                        <option value="termine">termine</option>
+                    </select>
+                </div>
+
+                <div class="mb-4">
+                    <label for="professeur_id" class="block text-gray-700">ID du professeur</label>
+                    <select id="professeur_id" formControlName="professeur_id" class="form-select mt-1 block w-full">
+                        <option value="">Selectionner un prof</option>
+                        <option *ngFor="let prof of profs" value={{prof.id}}>{{prof.nomComplet}}</option>
+                    </select>
+                </div>
+
+                <div class="mb-4">
+                    <label for="date" class="block text-gray-700">Date</label>
+                    <input type="date" id="date" formControlName="date" class="form-input mt-1 block w-full" />
+                </div>
+
+                <button type="submit"
+                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Envoyer</button>
+            </form>
+        </div>
+    </div>
+</div>

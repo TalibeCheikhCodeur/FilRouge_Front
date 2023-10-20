@@ -1,0 +1,24 @@
+<div id="calendar-container">
+    <div id="cal-buttons" class="flex justify-between">
+        <div id="cal-date-nav-button-" class="flex justify-around items-center gap-3 px-4 py-2 rounded">
+            <button class=" bg-cyan-800 text-white py-2 px-2 my-1 rounded " id="previous" mwlCalendarPreviousView [(viewDate)]="viewDate" [view]="view">Previous</button>
+            <button class=" bg-cyan-800 text-white py-2 px-2 my-1 rounded " id="today" mwlCalendarToday [(viewDate)]="viewDate">Today</button>
+            <button class=" bg-cyan-800 text-white py-2 px-2 my-1 rounded " id="next" mwlCalendarNextView [(viewDate)]="viewDate" [view]="view">Next</button>
+        </div>
+        <div id="cal-date-field">{{viewDate | calendarDate:(view + 'ViewTitle'):'en'}}</div>
+        <div id="cal-view-nav-button" class="flex justify-around items-center gap-3">
+            <button class=" bg-cyan-800 text-white py-2 px-2 my-1 rounded "  id="month" (click)="setView(calendarView.Month)">Month</button>
+            <button class=" bg-cyan-800 text-white py-2 px-2 my-1 rounded " id="week" (click)="setView(calendarView.Week)">Week</button>
+            <button class=" bg-cyan-800 text-white py-2 px-2 my-1 rounded " id="day" (click)="setView(calendarView.Day)">Day</button>
+        </div>
+    </div>
+    <span [ngSwitch]="view">
+        <mwl-calendar-month-view [viewDate]="viewDate" *ngSwitchCase="calendarView.Month"
+            [events]="events"></mwl-calendar-month-view>
+        <mwl-calendar-week-view [viewDate]="viewDate" *ngSwitchCase="calendarView.Week"
+            [events]="events"></mwl-calendar-week-view>
+        <mwl-calendar-day-view [viewDate]="viewDate" *ngSwitchCase="calendarView.Day"
+            [events]="events"></mwl-calendar-day-view>
+    </span>
+
+</div>
