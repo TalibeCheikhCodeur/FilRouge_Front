@@ -1,0 +1,11 @@
+{
+    "editor.codeActionWidget.includeNearbyQuickfixes": false,
+    "editor.columnSelection": false,
+    "workbench.activityBar.iconClickBehavior": "toggle",
+    "workbench.view.alwaysShowHeaderActions": false,
+    "breadcrumbs.enabled": true,
+    "breadcrumbs.showMethods": true,
+    "workbench.editor.autoLockGroups": {
+        "workbench.editorinputs.searchEditorInput": true
+    }
+}
